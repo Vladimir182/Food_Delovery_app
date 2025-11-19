@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:full_food_delivery/components/my_button.dart';
 import 'package:full_food_delivery/components/my_textfield.dart';
 
+import 'home_page.dart';
+
 class LoginPage extends StatefulWidget {
   final void Function()? onTap;
 
-  LoginPage({super.key, this.onTap});
+  const LoginPage({super.key, this.onTap});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -15,6 +17,20 @@ class _LoginPageState extends State<LoginPage> {
   // text editing controller
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
+  // login method
+
+  void login() {
+    /*
+  fill out authentication here...
+    */
+
+    // navigator to home page
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => HomePage()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(height: 25),
 
             // sign in button
-            MyButton(text: 'Sign in', onTap: () {}),
+            MyButton(text: 'Sign in', onTap: login),
 
             const SizedBox(height: 25),
 
