@@ -3,7 +3,6 @@ import 'package:full_food_delivery/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'auth/login_or_register.dart';
-import 'page/login_page.dart';
 
 void main() {
   runApp(
