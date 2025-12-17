@@ -6,9 +6,9 @@ class Food {
   final FoodCategory category; // burger
   final List<Addon> availableAddons; // [ extra cheese, sauce, extra patty]
 
-  Food(
-    this.category,
-    this.availableAddons, {
+  Food({
+    required this.category,
+    required this.availableAddons,
     required this.name,
     required this.description,
     required this.imagePath,
@@ -23,7 +23,7 @@ enum FoodCategory { burgers, salads, sides, desserts, drink }
 
 class Addon {
   String name;
-  String price;
+  double price;
 
   Addon({required this.name, required this.price});
 }

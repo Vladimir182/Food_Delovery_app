@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:full_food_delivery/components/my_current_location.dart';
 import 'package:full_food_delivery/components/my_description_box.dart';
 import 'package:full_food_delivery/components/my_drawer.dart';
+import 'package:full_food_delivery/components/my_food_tile.dart';
 import 'package:full_food_delivery/components/my_sliver_app_bar.dart';
 import 'package:full_food_delivery/components/my_tab_bar.dart';
+import 'package:full_food_delivery/models/food.dart';
+import 'package:full_food_delivery/models/restaurant.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -20,7 +24,10 @@ class _HomePageState extends State<HomePage>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(
+      length: FoodCategory.values.length,
+      vsync: this,
+    );
   }
 
   @override
@@ -29,8 +36,37 @@ class _HomePageState extends State<HomePage>
     super.dispose();
   }
 
+  // sort out and return a list of food items then pelong to a specific category
+  List<Food> _filterMenuByCategory(FoodCategory category, List<Food> fullMenu) {
+    return fullMenu.where((food) => food.category == category).toList();
+  }
+
+  // return list of foods in given category
+  List<Widget> getFoodInThisCategory(List<Food> fullMenu) {
+    return FoodCategory.values.map((category) {
+      // get category menu
+      List<Food> categoryMenu = _filterMenuByCategory(category, fullMenu);
+
+      return ListView.builder(
+        padding: EdgeInsets.zero,
+        itemCount: categoryMenu.length,
+        physics: NeverScrollableScrollPhysics(),
+        itemBuilder: (context, index) {
+          // get individual food
+          final food = categoryMenu[index];
+
+          // return food tile UI
+          return MyFoodTile(food: food, onTap: () {});
+        },
+      );
+    }).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final menu = context.select<Restaurant, List<Food>>(
+      (restaurant) => restaurant.menu,
+    );
     return Scaffold(
       // appBar: AppBar(title: Text('Home page')),
       drawer: MyDrawer(),
@@ -56,20 +92,7 @@ class _HomePageState extends State<HomePage>
         ],
         body: TabBarView(
           controller: _tabController,
-          children: [
-            ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) => Text('First tab items'),
-            ),
-            ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) => Text('Second tab items'),
-            ),
-            ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) => Text('third tab items'),
-            ),
-          ],
+          children: getFoodInThisCategory(menu), // використовуємо menu напряму
         ),
       ),
     );
