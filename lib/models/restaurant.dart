@@ -21,7 +21,7 @@ class Restaurant extends ChangeNotifier {
       name: "Classic Cheeseburger",
       description:
           "A juicy beef patty with melted cheddar, lettuce, tomato and a hint of onion and pickle",
-      imagePath: "lib/images/burgers/1.png",
+      imagePath: "lib/images/burgers/2.png",
       price: 0.99,
       category: FoodCategory.burgers,
       availableAddons: [
@@ -34,7 +34,7 @@ class Restaurant extends ChangeNotifier {
       name: "Classic Cheeseburger",
       description:
           "A juicy beef patty with melted cheddar, lettuce, tomato and a hint of onion and pickle",
-      imagePath: "lib/images/burgers/1.png",
+      imagePath: "lib/images/burgers/3.png",
       price: 0.99,
       category: FoodCategory.burgers,
       availableAddons: [
@@ -47,7 +47,7 @@ class Restaurant extends ChangeNotifier {
       name: "Classic Cheeseburger",
       description:
           "A juicy beef patty with melted cheddar, lettuce, tomato and a hint of onion and pickle",
-      imagePath: "lib/images/burgers/1.png",
+      imagePath: "lib/images/burgers/4.png",
       price: 0.99,
       category: FoodCategory.burgers,
       availableAddons: [
@@ -60,7 +60,7 @@ class Restaurant extends ChangeNotifier {
       name: "Classic Cheeseburger",
       description:
           "A juicy beef patty with melted cheddar, lettuce, tomato and a hint of onion and pickle",
-      imagePath: "lib/images/burgers/1.png",
+      imagePath: "lib/images/burgers/5.png",
       price: 0.99,
       category: FoodCategory.burgers,
       availableAddons: [
