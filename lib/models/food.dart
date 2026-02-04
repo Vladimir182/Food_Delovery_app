@@ -17,13 +17,16 @@ class Food {
 }
 
 // food categories
-enum FoodCategory { burgers, salads, sides, desserts, drink }
+enum FoodCategory { burgers, salads, sides, desserts, drinks }
 
 // food addon
 
 class Addon {
-  String name;
-  double price;
+  final String name;
+  final double price;
 
   Addon({required this.name, required this.price});
+
+  @override
+  String toString() => 'Addon(name: $name, price: $price)';
 }
