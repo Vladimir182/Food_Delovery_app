@@ -353,6 +353,7 @@ class Restaurant extends ChangeNotifier {
         _cart.removeAt(cartIndex);
       }
     }
+    notifyListeners();
   }
 
   // get total price of cart
@@ -368,9 +369,22 @@ class Restaurant extends ChangeNotifier {
     }
     return total;
   }
+
   // get total number of items in cart
+  int getTotalItemCount() {
+    int totalItemCount = 0;
+
+    for (CartItem cartItem in _cart) {
+      totalItemCount += cartItem.quantity;
+    }
+    return totalItemCount;
+  }
 
   // clear cart
+  void clearCart() {
+    _cart.clear();
+    notifyListeners();
+  }
 
   /*
 
