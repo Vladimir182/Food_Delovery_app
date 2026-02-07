@@ -40,18 +40,13 @@ class MyFoodTile extends StatelessWidget {
                 ),
                 const SizedBox(width: 15),
                 // food images
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.black87,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadiusGeometry.circular(8),
-                    child: Image.network(
-                      food.imagePath,
-                      height: 120,
-                      width: 120,
-                    ),
+                ClipRRect(
+                  borderRadius: BorderRadiusGeometry.circular(8),
+                  child: Image.network(
+                    food.imagePath,
+                    fit: BoxFit.cover,
+                    height: 120,
+                    width: 120,
                   ),
                 ),
               ],

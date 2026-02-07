@@ -10,6 +10,9 @@ class CartItem {
     required this.selectedAddons,
     this.quantity = 1,
   });
+  @override
+  String toString() =>
+      'CartItem( food: $food, selectedAddons: $selectedAddons, quantity: $quantity)';
   double get totalPrice {
     double addonsPrice = selectedAddons.fold(
       0,
