@@ -14,6 +14,9 @@ class Food {
     required this.imagePath,
     required this.price,
   });
+  @override
+  String toString() =>
+      'Food(name: $name, description: $description, imagePath: $imagePath, price: $price, category: $category, availableAddons: $availableAddons)';
 }
 
 // food categories

@@ -41,7 +41,7 @@ class MyFoodTile extends StatelessWidget {
                 const SizedBox(width: 15),
                 // food images
                 ClipRRect(
-                  borderRadius: BorderRadiusGeometry.circular(8),
+                  borderRadius: BorderRadius.circular(8),
                   child: Image.network(
                     food.imagePath,
                     fit: BoxFit.cover,
