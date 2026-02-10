@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:full_food_delivery/components/my_button.dart';
+import 'package:full_food_delivery/page/delivery_progress_page.dart';
 import 'package:provider/provider.dart';
 
 class PaymentPage extends StatefulWidget {
@@ -45,13 +46,18 @@ class _PaymentPageState extends State<PaymentPage> {
             ),
 
             // Yes button
-            // TextButton(
-            //   onPressed: () => Navigator.push(
-            //     context,
-            //     MaterialPageRoute(builder: (context) => DeliveryProgressPage()),
-            //   ),
-            //   child: const Text('Yes'),
-            // ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DeliveryProgressPage(),
+                  ),
+                );
+              },
+              child: const Text('Yes'),
+            ),
           ],
         ),
       );
