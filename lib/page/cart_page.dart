@@ -23,25 +23,29 @@ class CartPage extends StatelessWidget {
           // clear cart button
           IconButton(
             onPressed: () {
-              showDialog(
-                context: context,
-                builder: (context) => AlertDialog(
-                  title: const Text('Are you sure you want to clear the cart'),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.pop(context),
-                      child: Text('Cancel'),
+              if (userCart.isNotEmpty) {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: const Text(
+                      'Are you sure you want to clear the cart',
                     ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                        restaurant.clearCart();
-                      },
-                      child: Text('Yes'),
-                    ),
-                  ],
-                ),
-              );
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.pop(context),
+                        child: Text('Cancel'),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          restaurant.clearCart();
+                        },
+                        child: Text('Yes'),
+                      ),
+                    ],
+                  ),
+                );
+              }
             },
             icon: Icon(Icons.delete),
           ),
