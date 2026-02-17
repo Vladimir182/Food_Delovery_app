@@ -3,6 +3,7 @@ import 'package:full_food_delivery/components/my_button.dart';
 import 'package:full_food_delivery/components/my_cart_tile.dart';
 import 'package:full_food_delivery/models/restaurant.dart';
 import 'package:full_food_delivery/page/payment_page.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 class CartPage extends StatelessWidget {
@@ -58,9 +59,22 @@ class CartPage extends StatelessWidget {
             child: Column(
               children: [
                 userCart.isEmpty
-                    ? const Expanded(
-                        child: Center(child: Text('Cart is empty...')),
+                    ? Expanded(
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Lottie.asset(
+                                'assets/empty.json',
+                                width: 200,
+                                height: 200,
+                              ),
+                              Text('Cart is empty...'),
+                            ],
+                          ),
+                        ),
                       )
+                    // Text('Cart is empty...'),
                     : Expanded(
                         child: ListView.builder(
                           itemCount: userCart.length,

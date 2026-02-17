@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:full_food_delivery/components/my_button.dart';
 import 'package:full_food_delivery/components/my_textfield.dart';
+import 'package:lottie/lottie.dart';
 
 import 'home_page.dart';
 
@@ -41,11 +42,7 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // logo
-            Icon(
-              Icons.lock_open_rounded,
-              size: 72,
-              color: Theme.of(context).colorScheme.inversePrimary,
-            ),
+            Lottie.asset('assets/mainLogo.json', width: 200, height: 200),
 
             const SizedBox(height: 25),
 
