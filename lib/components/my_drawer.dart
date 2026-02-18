@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:full_food_delivery/components/my_drawer_tile.dart';
+import 'package:full_food_delivery/services/auth/auth_service.dart';
 
 import '../page/settings_page.dart';
 
@@ -11,6 +12,11 @@ class MyDrawer extends StatefulWidget {
 }
 
 class _MyDrawerState extends State<MyDrawer> {
+  void logout() {
+    final authService = AuthService();
+    authService.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -52,7 +58,7 @@ class _MyDrawerState extends State<MyDrawer> {
 
           Spacer(),
 
-          MyDrawerTile(text: 'L O G O U T', icon: Icons.logout, onTap: () {}),
+          MyDrawerTile(text: 'L O G O U T', icon: Icons.logout, onTap: logout),
 
           SizedBox(height: 25.0),
           // settings list tile

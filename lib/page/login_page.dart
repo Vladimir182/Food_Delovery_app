@@ -1,9 +1,10 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:full_food_delivery/components/my_button.dart';
 import 'package:full_food_delivery/components/my_textfield.dart';
+import 'package:full_food_delivery/services/auth/auth_service.dart';
 import 'package:lottie/lottie.dart';
-
-import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
   final void Function()? onTap;
@@ -21,16 +22,24 @@ class _LoginPageState extends State<LoginPage> {
 
   // login method
 
-  void login() {
-    /*
-  fill out authentication here...
-    */
+  void login() async {
+    final authService = AuthService();
 
-    // navigator to home page
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => HomePage()),
-    );
+    try {
+      await authService.signInWithEmailPassword(
+        emailController.text,
+        passwordController.text,
+      );
+    }
+    // display any errors
+    catch (e) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(e.toString(), style: TextStyle(fontSize: 20)),
+        ),
+      );
+    }
   }
 
   @override
