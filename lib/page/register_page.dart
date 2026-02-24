@@ -1,7 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:full_food_delivery/page/home_page.dart';
 import 'package:full_food_delivery/services/auth/auth_service.dart';
 
 import '../components/my_button.dart';
