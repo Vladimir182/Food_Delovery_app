@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:full_food_delivery/models/restaurant.dart';
+import 'package:provider/provider.dart';
 
 class MyCurrentLocation extends StatelessWidget {
   const MyCurrentLocation({super.key});
 
   void openLocationSearchBox(BuildContext context) {
+    final textController = TextEditingController();
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
         title: const Text("Your location"),
-        content: const TextField(
-          decoration: InputDecoration(hintText: "Search address..."),
+        content: TextField(
+          controller: textController,
+          decoration: InputDecoration(hintText: "Enter address..."),
         ),
         actions: [
           // cancel button
@@ -20,7 +24,13 @@ class MyCurrentLocation extends StatelessWidget {
 
           // save button
           MaterialButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () {
+              // update delivery address
+              String newAddress = textController.text;
+              context.read<Restaurant>().updateDeliveryAddress(newAddress);
+              Navigator.pop(context);
+              textController.clear();
+            },
             child: Text("Save"),
           ),
         ],
@@ -30,6 +40,9 @@ class MyCurrentLocation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final address = context.select<Restaurant, String?>(
+      (restaurant) => restaurant.deliveryAddress,
+    );
     return Padding(
       padding: const EdgeInsets.all(25.0),
       child: Column(
@@ -45,7 +58,7 @@ class MyCurrentLocation extends StatelessWidget {
               children: [
                 // address
                 Text(
-                  "6901 Hollywood Bvl",
+                  address.toString(),
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.inversePrimary,
                     fontWeight: FontWeight.bold,
